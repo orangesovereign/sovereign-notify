@@ -15,12 +15,6 @@
   font-display: swap;
 }
 @font-face {
-  font-family: 'SC Baskerville';
-  src: url('./assets/fonts/LibreBaskerville-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
   font-family: 'SC Fell';
   src: url('./assets/fonts/IMFellEnglish-Italic.woff2') format('woff2');
   font-style: italic;
@@ -51,9 +45,9 @@ html, body {
   inset: 0;
   pointer-events: none;
   font-family: var(--font-body);
-  font-weight: 700; /* owner round 1: bold throughout for readability */
   /* resolution-dynamic base (owner round 1: fixed px too small on high-res):
-     scales with screen height — ~23px @1080p, ~31px @1440p, capped @ 4K */
+     scales with screen height — ~23px @1080p, ~31px @1440p, capped @ 4K.
+     Bold removed round 3 (owner: dynamic size made it unnecessary). */
   font-size: calc(clamp(18px, 2.15vh, 42px) * var(--k4-scale, 1));
 }
 
@@ -214,7 +208,6 @@ html, body {
 }
 .k4-subtitle .line {
   font-family: var(--font-body);
-  font-weight: 700;
   font-size: 1.05em;
   color: var(--parchment);
 }
