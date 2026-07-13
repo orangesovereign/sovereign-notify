@@ -9,7 +9,7 @@ lua54 'yes'
 
 author 'Sovereign County RP'
 description 'Sovereign Notify — branded notification overlay (objective slips, progress ticks, mission cards, dialogue subtitles) with a simple export API'
-version '1.1.0'
+version '1.2.0'
 
 shared_scripts {
   'config.lua',

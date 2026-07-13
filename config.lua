@@ -3,8 +3,8 @@
 
 NotifyConfig = {
   -- where objective slips + progress ticks stack:
-  -- 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'
-  anchor = 'top-right',
+  -- 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left' | 'mid-right' | 'mid-left'
+  anchor = 'mid-right', -- owner round 1: mid right border, clear of the minimap corner
 
   -- overall size multiplier for all elements
   scale = 1.0,

@@ -15,6 +15,12 @@
   font-display: swap;
 }
 @font-face {
+  font-family: 'SC Baskerville';
+  src: url('./assets/fonts/LibreBaskerville-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
   font-family: 'SC Fell';
   src: url('./assets/fonts/IMFellEnglish-Italic.woff2') format('woff2');
   font-style: italic;
@@ -45,7 +51,10 @@ html, body {
   inset: 0;
   pointer-events: none;
   font-family: var(--font-body);
-  font-size: calc(16px * var(--k4-scale, 1));
+  font-weight: 700; /* owner round 1: bold throughout for readability */
+  /* resolution-dynamic base (owner round 1: fixed px too small on high-res):
+     scales with screen height — ~23px @1080p, ~31px @1440p, capped @ 4K */
+  font-size: calc(clamp(18px, 2.15vh, 42px) * var(--k4-scale, 1));
 }
 
 /* ---- anchored stack: objective slips + progress tick ---- */
@@ -62,6 +71,8 @@ html, body {
 .k4-stack.top-left { top: 3.5vh; left: 1.6vw; align-items: flex-start; }
 .k4-stack.bottom-right { bottom: 5vh; right: 1.6vw; align-items: flex-end; }
 .k4-stack.bottom-left { bottom: 5vh; left: 1.6vw; align-items: flex-start; }
+.k4-stack.mid-right { top: 50%; transform: translateY(-50%); right: 1.6vw; align-items: flex-end; }
+.k4-stack.mid-left { top: 50%; transform: translateY(-50%); left: 1.6vw; align-items: flex-start; }
 
 @keyframes k4-in {
   from { opacity: 0; transform: translateY(-0.6em); }
@@ -203,6 +214,7 @@ html, body {
 }
 .k4-subtitle .line {
   font-family: var(--font-body);
-  font-size: 0.9em;
+  font-weight: 700;
+  font-size: 1.05em;
   color: var(--parchment);
 }
