@@ -1,4 +1,4 @@
--- Sovereign Notify — county-wide notification system for RedM
+﻿-- Sovereign Notify â€” county-wide notification system for RedM
 -- Standalone: any resource on the server can use it (origin: Storyworks K4)
 
 fx_version 'cerulean'
@@ -8,8 +8,8 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 lua54 'yes'
 
 author 'Sovereign County RP'
-description 'Sovereign Notify — branded notification overlay (objective slips, progress ticks, mission cards) with a simple export API'
-version '1.0.0'
+description 'Sovereign Notify â€” branded notification overlay (objective slips, progress ticks, mission cards) with a simple export API'
+version '1.1.0'
 
 shared_scripts {
   'config.lua',

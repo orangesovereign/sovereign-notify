@@ -171,3 +171,38 @@ html, body {
   background: linear-gradient(180deg, rgba(26, 11, 8, 0.94), rgba(20, 10, 8, 0.94));
 }
 .k4-card.failed .title { color: #d08a7c; }
+
+/* ---- dialogue subtitles (bottom center) ---- */
+
+@keyframes k4-sub-in {
+  from { opacity: 0; transform: translate(-50%, 0.4em); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.k4-subtitle {
+  position: absolute;
+  bottom: 9vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: 56vw;
+  box-sizing: border-box;
+  text-align: center;
+  background: rgba(10, 8, 6, 0.72);
+  border: 1px solid rgba(168, 131, 75, 0.35);
+  padding: 0.45em 1.1em 0.42em;
+  box-shadow: 0 0.25em 0.8em rgba(0, 0, 0, 0.5);
+  animation: k4-sub-in 0.22s ease both;
+}
+.k4-subtitle .who {
+  font-family: var(--font-display);
+  font-size: 0.62em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-right: 0.9em;
+}
+.k4-subtitle .line {
+  font-family: var(--font-body);
+  font-size: 0.9em;
+  color: var(--parchment);
+}

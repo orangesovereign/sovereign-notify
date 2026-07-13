@@ -28,6 +28,10 @@ function reducer(state, action) {
       return { ...state, tick: { id: nextId++, text: action.text } }
     case 'card':
       return { ...state, card: { id: nextId++, variant: action.variant, title: action.title, body: action.body } }
+    case 'subtitle':
+      return { ...state, subtitle: { id: nextId++, speaker: action.speaker, text: action.text, ms: action.ms } }
+    case 'expire-subtitle':
+      return state.subtitle && state.subtitle.id === action.id ? { ...state, subtitle: null } : state
     case 'expire-slip':
       return { ...state, slips: state.slips.filter(s => s.id !== action.id) }
     case 'expire-tick':
@@ -55,6 +59,7 @@ export default function App() {
     slips: [],
     tick: null,
     card: null,
+    subtitle: null,
   })
 
   useEffect(() => {
@@ -65,16 +70,18 @@ export default function App() {
       if (data.type === 'sn:objective') dispatch({ type: 'objective', text: data.text })
       if (data.type === 'sn:tick') dispatch({ type: 'tick', text: data.text })
       if (data.type === 'sn:card') dispatch({ type: 'card', variant: data.variant, title: data.title, body: data.body })
+      if (data.type === 'sn:subtitle') dispatch({ type: 'subtitle', speaker: data.speaker, text: data.text, ms: data.ms })
     }
     window.addEventListener('message', onMessage)
     return () => window.removeEventListener('message', onMessage)
   }, [])
 
-  const { config, slips, tick, card } = state
+  const { config, slips, tick, card, subtitle } = state
   const d = { ...DEFAULTS.durations, ...config.durations }
 
   useExpiry(tick, d.tick, dispatch, 'expire-tick')
   useExpiry(card, card && card.variant === 'started' ? d.cardStarted : d.cardEnd, dispatch, 'expire-card')
+  useExpiry(subtitle, (subtitle && subtitle.ms) || d.subtitle || 3500, dispatch, 'expire-subtitle')
 
   return (
     <div className="k4-root" style={{ '--k4-scale': config.scale }}>
@@ -89,6 +96,12 @@ export default function App() {
           <div className="title">{card.title}</div>
           <div className="rule" />
           {card.body ? <div className="body">{card.body}</div> : null}
+        </div>
+      )}
+      {subtitle && (
+        <div className="k4-subtitle" key={subtitle.id}>
+          {subtitle.speaker ? <span className="who">{subtitle.speaker}</span> : null}
+          <span className="line">{subtitle.text}</span>
         </div>
       )}
     </div>

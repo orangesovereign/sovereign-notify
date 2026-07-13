@@ -21,4 +21,8 @@ exports('Card', function(source, variant, title, body)
   send(source, { kind = 'card', variant = variant, title = title, body = body })
 end)
 
-print('^6[sovereign_notify]^7 ready — exports: Notify, Objective, Tick, Card')
+exports('Subtitle', function(source, speaker, text, ms)
+  send(source, { kind = 'subtitle', speaker = speaker, text = text, ms = ms })
+end)
+
+print('^6[sovereign_notify]^7 ready — exports: Notify, Objective, Tick, Card, Subtitle')

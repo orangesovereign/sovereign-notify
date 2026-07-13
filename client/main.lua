@@ -14,7 +14,7 @@ CreateThread(function()
   pushConfig()
 end)
 
-local VALID = { objective = 'sn:objective', tick = 'sn:tick', card = 'sn:card' }
+local VALID = { objective = 'sn:objective', tick = 'sn:tick', card = 'sn:card', subtitle = 'sn:subtitle' }
 
 local function show(payload)
   if type(payload) ~= 'table' then return end
@@ -27,6 +27,8 @@ local function show(payload)
     variant = payload.variant,
     title = payload.title,
     body = payload.body,
+    speaker = payload.speaker,
+    ms = payload.ms,
   })
 end
 
@@ -47,4 +49,8 @@ end)
 ---variant: 'started' | 'complete' | 'failed' | 'cancelled' | nil (plain)
 exports('Card', function(variant, title, body)
   show({ kind = 'card', variant = variant, title = title, body = body })
+end)
+
+exports('Subtitle', function(speaker, text, ms)
+  show({ kind = 'subtitle', speaker = speaker, text = text, ms = ms })
 end)
